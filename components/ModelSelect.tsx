@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { imageHelpers } from "@/lib/image-helpers";
-import { falAILogo } from "@/lib/logos";
+import { geminiLogo } from "@/lib/logos";
 import { ProviderKey } from "@/lib/provider-config";
 import { cn } from "@/lib/utils";
 import {
@@ -30,10 +30,11 @@ interface ModelSelectProps {
   timing?: ProviderTiming;
   failed?: boolean;
   modelId: string;
+  errorMessage?: string;
 }
 
 const PROVIDER_LINKS = {
-  fal: "fal",
+  gemini: "https://ai.google.dev/gemini-api/docs/image-generation",
 } as const;
 
 export function ModelSelect({
@@ -46,8 +47,9 @@ export function ModelSelect({
   timing,
   failed,
   modelId,
+  errorMessage,
 }: ModelSelectProps) {
-  const Icon = falAILogo;
+  const Icon = geminiLogo;
 
   return (
     <Card
@@ -59,10 +61,7 @@ export function ModelSelect({
             <div className="bg-primary p-2 rounded-full">
               <Link
                 className="hover:opacity-80"
-                href={
-                  "https://sdk.vercel.ai/providers/ai-sdk-providers/" +
-                  PROVIDER_LINKS[providerKey]
-                }
+                href={PROVIDER_LINKS[providerKey]}
                 target="_blank"
               >
                 <div className="text-primary-foreground">
@@ -73,13 +72,10 @@ export function ModelSelect({
             <div className="flex flex-col w-full">
               <Link
                 className="hover:opacity-80"
-                href={
-                  "https://sdk.vercel.ai/providers/ai-sdk-providers/" +
-                  PROVIDER_LINKS[providerKey]
-                }
+                href={PROVIDER_LINKS[providerKey]}
                 target="_blank"
               >
-                <h3 className="font-semibold text-lg">{providerKey}</h3>
+                <h3 className="font-semibold text-lg">Gemini</h3>
               </Link>
               <div className="flex justify-between items-center w-full">
                 <Select
@@ -128,6 +124,7 @@ export function ModelSelect({
           image={image}
           timing={timing}
           failed={failed}
+          errorMessage={errorMessage}
         />
       </CardContent>
     </Card>

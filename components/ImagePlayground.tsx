@@ -31,6 +31,7 @@ export function ImagePlayground({
     images,
     timings,
     failedProviders,
+    errors,
     isLoading,
     startGeneration,
     activePrompt,
@@ -112,6 +113,7 @@ export function ImagePlayground({
       const imageData = imageItem?.image;
       const modelId = imageItem?.modelId ?? "N/A";
       const timing = timings[instance.id] || {};
+      const error = errors.find((err) => err.instanceId === instance.id);
 
       return {
         label: `${provider.displayName} ${instance.id.split('-')[1]}`,
@@ -127,6 +129,7 @@ export function ImagePlayground({
         modelId,
         timing,
         failed: failedProviders.includes(instance.id),
+        errorMessage: error?.message,
       };
     });
   };
@@ -144,6 +147,13 @@ export function ImagePlayground({
           onModeChange={handleModeChange}
           suggestions={suggestions}
         />
+        {errors.length > 0 && (
+          <div className="mb-6 rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+            {errors.length === 1
+              ? errors[0].message
+              : `${errors.length} models failed. ${errors[0].message}`}
+          </div>
+        )}
         <>
           {(() => {
             return (

@@ -29,6 +29,7 @@ interface ModelCardCarouselProps {
     timing?: ProviderTiming;
     failed?: boolean;
     modelId: string;
+    errorMessage?: string;
   }>;
 }
 
