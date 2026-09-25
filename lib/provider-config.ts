@@ -1,4 +1,4 @@
-export type ProviderKey = "fal";
+export type ProviderKey = "gemini";
 export type ModelMode = "performance" | "quality";
 
 export const PROVIDERS: Record<
@@ -10,31 +10,29 @@ export const PROVIDERS: Record<
     models: string[];
   }
 > = {
-  fal: {
-    displayName: "Fal",
-    iconPath: "/provider-icons/fal.svg",
-    color: "from-orange-500 to-red-500",
+  gemini: {
+    displayName: "Gemini",
+    iconPath: "/provider-icons/gemini.svg",
+    color: "from-blue-500 to-purple-500",
     models: [
-      "fal-ai/flux/dev",
-      "fal-ai/fast-sdxl",
-      "fal-ai/flux-pro/v1.1-ultra",
-      "fal-ai/ideogram/v2",
-      "fal-ai/recraft-v3",
-      "fal-ai/hyper-sdxl",
+      "gemini-2.5-flash-image",
+      "gemini-3.1-flash-lite-image",
+      "gemini-3.1-flash-image",
+      "gemini-3-pro-image",
     ],
   },
 };
 
 export const MODEL_CONFIGS: Record<ModelMode, Record<ProviderKey, string>> = {
   performance: {
-    fal: "fal-ai/fast-sdxl",
+    gemini: "gemini-2.5-flash-image",
   },
   quality: {
-    fal: "fal-ai/flux-pro/v1.1-ultra",
+    gemini: "gemini-3-pro-image",
   },
 };
 
-export const PROVIDER_ORDER: ProviderKey[] = ["fal"];
+export const PROVIDER_ORDER: ProviderKey[] = ["gemini"];
 
 export const initializeProviderRecord = <T>(defaultValue?: T) =>
   Object.fromEntries(

@@ -17,6 +17,7 @@ interface ImageDisplayProps {
   fallbackIcon?: React.ReactNode;
   enabled?: boolean;
   modelId: string;
+  errorMessage?: string;
 }
 
 export function ImageDisplay({
@@ -26,6 +27,7 @@ export function ImageDisplay({
   failed,
   fallbackIcon,
   modelId,
+  errorMessage,
 }: ImageDisplayProps) {
   const [isZoomed, setIsZoomed] = useState(false);
 
@@ -133,7 +135,14 @@ export function ImageDisplay({
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             {failed ? (
-              fallbackIcon || <AlertCircle className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col items-center justify-center gap-2 px-4 text-center">
+                {fallbackIcon || <AlertCircle className="h-8 w-8 text-red-500" />}
+                {errorMessage && (
+                  <p className="text-xs text-red-500/90 leading-snug max-w-[90%]">
+                    {errorMessage}
+                  </p>
+                )}
+              </div>
             ) : image ? (
               <>
                 {/* eslint-disable-next-line @next/next/no-img-element */}

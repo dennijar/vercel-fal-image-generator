@@ -112,6 +112,21 @@ export const VertexIcon = ({ size = 16 }) => {
   )
 }
 
+export const geminiLogo = ({ size = 16 }: { size: number }) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M12 1.2c.25 3.55 1.55 6.2 4.05 8.7 2.5 2.5 5.15 3.8 8.7 4.05-3.55.25-6.2 1.55-8.7 4.05-2.5 2.5-3.8 5.15-4.05 8.7-.25-3.55-1.55-6.2-4.05-8.7C5.75 13.7 3.1 12.4-.45 12.15c3.55-.25 6.2-1.55 8.7-4.05C10.75 5.6 12.05 2.95 12 1.2Z" />
+    </svg>
+  );
+};
+
 export const falAILogo = ({ size = 16 }: { size: number }) => {
   return (
     <svg

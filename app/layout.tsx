@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Fal x Vercel Image Generator",
-  description: "An open-source AI image generator using the AI SDK and Fal via the Vercel Marketplace",
+  title: "Gemini Image Generator",
+  description: "An AI image generator powered by Google Gemini",
 };
 
 export default function RootLayout({
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">
         {children}
+        <Toaster />
         <Analytics />
       </body>
     </html>
